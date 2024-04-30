@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Music" ALTER COLUMN "user_id" SET DEFAULT '0d4f38a2-7725-4021-9d00-1e1f2d1279b0';

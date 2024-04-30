@@ -13,24 +13,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  password String
+  music Music[]
+  created_at DateTime @default(now())
+
+}
+
 model Music {
   id String @id @default(uuid())
   name  String
   type  String
   singer  String
-  user  User[]
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade )
+  user_id String @default("0d4f38a2-7725-4021-9d00-1e1f2d1279b0")
   created_at  DateTime   @default(now())
 
 }
 
-model User {
-  id String @id @default(uuid())
-  music Music @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  user_id String
-  name String
-  email String @unique
-  password String
-  created_at DateTime @default(now())
 
-}
 

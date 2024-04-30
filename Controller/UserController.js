@@ -16,6 +16,7 @@ export const fetchUsers = async (req, res) => {
 
 export const showUser = async (req,res) => {
     const {id} = req.body
+    console.log("-------------", Sid)
     const User = await prisma.user.findFirst({
         where:{
             id:id
@@ -60,7 +61,7 @@ export const deleteUser = async (req, res) => {
 
 
 export const createUser = async (req,res) => {
-    const { name, email, password, user_id} = req.body;
+    const { name, email, password, id} = req.body;
 
 
 
@@ -68,8 +69,7 @@ export const createUser = async (req,res) => {
         data:{
             name: name,
             email: email,
-            password: password,
-            user_id: user_id
+            password: password
 
         }
 

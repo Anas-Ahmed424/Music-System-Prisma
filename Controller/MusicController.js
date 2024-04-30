@@ -54,15 +54,16 @@ export const deleteMusic = async (req, res) => {
 
 
 export const createMusic = async (req,res) => {
-    const { name, type, singer} = req.body;
+    const { music_name, music_type, music_singer_name, music_user_id} = req.body;
 
 
 
     const music = await prisma.music.create({
         data:{
-            name: name,
-            type: type,
-            singer: singer
+            name: music_name,
+            type: music_type,
+            singer: music_singer_name,
+            user_id: music_user_id
 
         }
 
